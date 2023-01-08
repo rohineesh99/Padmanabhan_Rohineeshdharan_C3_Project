@@ -49,6 +49,14 @@ public class Restaurant {
         Item newItem = new Item(name,price);
         menu.add(newItem);
     }
+
+    public int getTotalSum(List<Item> item){
+        int sumValue = 0;
+        for (Item myItem : item) {
+            sumValue += myItem.getFare();
+        }
+        return sumValue;
+    }
     
     public void removeFromMenu(String itemName) throws itemNotFoundException {
 
