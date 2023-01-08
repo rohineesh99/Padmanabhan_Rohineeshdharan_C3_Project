@@ -66,7 +66,18 @@ class RestaurantTest {
     public void total_sum_of_order_when_multiple_items_selected(){
         restaurant_refactor();
         selectedItems= restaurant.getMenu();
-        assertEquals(400,restaurant.getTotalSum(selectedItems));
+        assertEquals(388,restaurant.getTotalSum(selectedItems));
     }
+
+    @Test
+    public void total_sum_of_order_when_multiple_items_selected_and_removed(){
+        restaurant_refactor();
+        selectedItems = restaurant.getMenu();
+        int totalFare = restaurant.getTotalSum(selectedItems);
+        int removedItemPrice = selectedItems.get(1).getFare();
+        selectedItems.remove(1);
+        assertEquals(totalFare-removedItemPrice,restaurant.getTotalSum(selectedItems));
+    }
+
     //<<<<<<<<<<<<<<<<<<<<<<<<<ORDER VALUE>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 }
